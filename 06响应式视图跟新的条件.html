@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <input type="button" :abc='num' value='按钮' @click='changeNum'>
+        {{fn()}}
+    </div>
+    <script src="js/vue1.js"></script>
+
+    <script>
+
+        // 响应式视图更新 -> 数据变换会导致视图变化
+
+        // 1:视图上必须有数据.(插值表达式内有数据,指令内有数据)
+        // 2:这个数据必须有监听.(这个视图变化时必须能通知某个视图更新.)
+        
+        // 备注:注意.
+            // 数组如何变化才能导致视图跟新?
+            // 1:只修改数组的元素是没用的.(不能更新视图)
+            // 2:只能通过能够修改数组本身的方法去修改数组.
+            //     能够修改数组本身的方法:push,pop,unshift,shift,splice,reverse,sort
+            // 3:直接让数组变成另一个新数组也可以更新视图.(不太安全)
+            //     arr = [...arr1].
+            // 改变数组的引用或者改变数组本身都可以响应式.唯独改变元素不行.
+
+        new Vue({
+            el:'#app',
+            data:{
+                num:0
+            },
+            methods:{
+                fn(){
+                    console.log('111111111')
+                },
+                changeNum(){
+                    this.num = Math.floor(Math.random()*10);
+                }
+            }
+        })
+
+    </script>
+
+</body>
+</html>

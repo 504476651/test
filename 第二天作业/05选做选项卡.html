@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div>div{
+				width: 200px;
+				height: 200px;
+				border:1px solid #000;
+				display: none;
+			}
+			div.active{
+				display: block;
+			}
+			input.active{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<input type="button" class='active' value='1111' />
+			<div v-show=''></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		let arr = ['1111','2222','3333','4444']
+		
+		//通过以上数组列表渲染出所有的input和所有的div(4个按钮4个div)
+		//然后给按钮添加事件实现选项卡逻辑。
+		//参考昨天只有一个红背景的li作业逻辑.
+		
+	</script>
+</html>

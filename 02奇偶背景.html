@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+        .green{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id='app'>
+        <input type="button" value="加入li" @click='addLi'>
+        <ul>
+            <!-- 
+                <li 
+                    v-for='(item,i) in arr' 
+                    :style='{backgroundColor:i%2 == 0?"red":"green"}'
+                >{{item}}</li> 
+            -->
+            <!-- <li v-for='(item,i) in arr' :style='{backgroundColor:color[i%2]}' >{{item}}</li> -->
+            <li v-for='(item,i) in arr' :class='{red:i%2==0,green:i%2!=0}' >{{item}}</li>
+        </ul>
+    </div>
+
+    <script src="js/vue1.js"></script>
+    <script>
+
+        new Vue({
+            el:'#app',
+            data:{
+                arr:[],
+                color:['red','green']
+            },
+            methods:{
+                addLi(){
+                    for(let i=0;i<10;i++){
+                        this.arr.push(this.getRandom());
+                    }                    
+                },
+                getRandom(){
+                    return Math.floor(Math.random()*9+1)
+                }
+            }
+        })
+
+    </script>
+
+</body>
+</html>

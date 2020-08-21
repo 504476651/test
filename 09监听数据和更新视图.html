@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        
+    </div>
+
+    <script>
+
+        // 视图
+        let oApp = document.querySelector('#app');
+        let oUl = document.querySelector('ul');
+
+        // 数据
+        let data = {arr:[1111,2222,3333],num:0}
+
+        for(let prop in data){
+            // 监听所有data的字段.
+            Obsever(prop);
+        }
+
+        // 默认列表渲染
+        render(data.arr,data.num)
+
+        // 数据劫持类
+        function Obsever(key){
+            // 中间变量.
+            let val = data[key];
+
+            // 给arr数据设置数据监听(数据劫持).
+            Object.defineProperty(data,key,{
+                // 当前arr被求值时触发.
+                get(){
+                    return val
+                },
+                // 当arr被重新赋值时触发.arr的引用发送了变化触发.(arr本身发送改变不触发)
+                set(newval){
+                    // 让新修改的值变成num的值.
+                    val = newval;
+                    // 当arr改变时,更新oApp的内容.
+                    render(data.arr,data.num);
+                }
+            })
+        }
+  
+        // 更新视图类
+        function render(arr,num){           
+            // 根据数据arr渲染ul
+            oApp.innerHTML = `
+                ${num}
+                <ul>
+                    ${
+                        arr.map((item,i)=>{
+                            console.log('li重新渲染')
+                            return `<li>${item}</li>`
+                        }).join('')
+                    }
+                </ul>
+            `
+        }
+
+    </script>
+
+</body>
+</html>

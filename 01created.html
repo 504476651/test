@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <input type="button" value='按钮' @click='fn'>
+        <p>{{num1}}</p>
+        <p>{{num2}}</p>
+        <p>{{total}}</p>
+    </div>
+
+    <script src="js/vue1.js"></script>
+    <script>
+
+        // 页面加载时，num得到一个初始值。
+        // 页面加载时，Vue会自动触发4个函数，其中一个叫created
+        // 可以再created内给data内的数据进行初始化。
+        // created里面的this也会指向Vue实例。
+
+        new Vue({
+            el:"#app",
+            data:{
+                // 工作里，data内的数据基本都是只有初始值。
+                // 在created内对data再进行初始化的操作。
+                num1:0,
+                num2:0
+            },
+            computed:{
+                total(){
+                    return this.num1 + this.num2
+                }
+            },
+            created(){
+                // 初始num为随机数。
+                this.fn();
+            },
+            methods:{
+                fn(){
+                    this.num1 = this.getRandom();
+                    this.num2 = this.getRandom();
+                },
+                getRandom(){
+                    return Math.floor(Math.random()*9+1)
+                }
+            }
+        })
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <input type="text" placeholder="单价" v-model='price' />
+        <input type="text" placeholder="数量" v-model='count' />
+        <div>总价:{{total}}</div>
+    </div>
+
+    <script src="js/vue1.js"></script>
+    <script>
+
+        // watch是通用的做法,computed不一定.
+        // computed的事情watch都能做,watch的事情computed不一定能实现.
+        // watch能处理异步,computed不行.
+
+        new Vue({
+            el:'#app',
+            data:{
+                price:1,
+                count:1,
+                total:1
+            },
+            // computed:{
+            //     total(){
+
+                    // total函数的返回值是计算属性total的值。
+                    // 如果这个return的值需要异步操作提供，则无法通过计算属性实现。
+
+                    // let total = null;
+                    // setTimeout((item,i)=>{
+                    //     total = this.price * this.count;
+                    // },1000);
+                    // return total
+
+            //     }               
+            // },
+            watch:{
+                price(){
+                    this.setTotal();                   
+                },
+                count(){
+                    this.setTotal();
+                },
+                setTotal(){
+                    setTimeout((item,i)=>{
+                        this.total = this.price * this.count;
+                    },1000) 
+                }
+            }
+        })
+
+    </script>
+
+</body>
+</html>

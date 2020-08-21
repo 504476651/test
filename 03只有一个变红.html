@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id='app'>
+        <input type="button" value="加入li" @click='addLi'>
+        <ul>
+            <!-- <li v-for='(item,i) in arr' @click='toRed(i)' :class={red:redStatus[i]} >{{item}}</li> -->
+            <li 
+                v-for='(item,i) in arr' 
+                @click='toRed(i)' 
+                :class={red:index==i} 
+            >{{item}}</li>
+        </ul>
+    </div>
+
+    <script src="js/vue1.js"></script>
+    <script>
+
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                arr:[],
+                redStatus:[],
+                index:0
+            },
+            methods:{
+                addLi(){
+                    for(let i=0;i<10;i++){
+                        this.arr.push(this.getRandom());
+                        this.redStatus.push(false);
+                    }                    
+                },
+                toRed(j){                    
+                    // for(let i=0;i<this.redStatus.length;i++){
+                        // 所有变元素变false。
+                        // this.redStatus[i] = false;   
+                        // this.redStatus.splice(i,1,false);                    
+                    // }
+                    // 将与被点击的li对应的数组的元素变true
+                    // this.redStatus.splice(j,1,true);
+                    // this.redStatus[i] = true;
+                    // -------------------------------------------------------------
+                    this.index = j;
+                },
+                getRandom(){
+                    return Math.floor(Math.random()*9+1)
+                }
+            }
+        })
+
+    </script>
+
+</body>
+</html>

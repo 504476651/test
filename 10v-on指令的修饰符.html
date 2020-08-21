@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <div @click='fn1'>
+            <input type="button" value='按钮' @click.stop='fn2'>
+        </div>
+    </div>
+
+    <script src="js/vue1.js"></script>
+    <script>    
+
+        // stop修饰符 -> 阻止事件冒泡
+        // prev修饰符 -> 阻止默认事件
+
+        new Vue({
+            el:'#app',
+            methods:{
+                fn1(ev){
+                    console.log('div事件');
+                },
+                fn2(ev){
+                    // 阻止事件冒泡。
+                    // ev.stopPropagation();
+                    console.log('input事件');
+                }
+            }
+        })
+        
+        // Vue的4个选项
+        // computed
+        // watch
+        // filter
+        // directive
+
+    </script>
+
+</body>
+</html>

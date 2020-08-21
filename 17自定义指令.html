@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <p v-background-color='color'>11111</p>
+        <div v-fly>我要飞</div>
+    </div>
+
+    <script src="js/vue1.js"></script>
+    <script>
+
+        // v-color -> 自定义指令 -> 封装修改背景色的DOM操作指令
+
+        // 全局的自定义指令。
+        Vue.directive('backgroundColor',function(el,params){
+            el.style.backgroundColor = params.value;
+        })
+
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                color:'green'
+            },
+            // 局部自定义指令。
+            // directives:{
+                // 如何获取指令所在的标签 -> 通过第一个参数获得。
+                // 如何获取指令的值。-> 通过第二个参数获得。
+                // backgroundColor(el,params){
+                    // oP.style.backgroundColor = 'red';
+                    // console.log(el);
+                    // el.style.backgroundColor = 'red';
+                    // console.log(params);
+                    // el.style.backgroundColor = params.value;
+                // }
+            // }
+        })
+
+    </script>
+    
+</body>
+</html>

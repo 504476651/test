@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <input type="text" placeholder="单价" v-model='price' />
+        <input type="text" placeholder="数量" v-model='count' />
+        <div>总价:{{total}}</div>
+    </div>
+
+    <script src="js/vue1.js"></script>
+    <script>
+
+        // prcie变化时跟新total,count变化时也要更新total.
+
+        // Vue已经给price和count设置了数据监听,数据变化时会更新视图
+        // 如果我想在视图跟新前做一些额外的事情,怎么办?
+
+        new Vue({
+            el:'#app',
+            data:{
+                price:1,
+                count:1,
+                // total:1
+            },
+            computed:{
+                total(){
+                    return this.price * this.count
+                }               
+            },
+            // watch:{
+            //     price(){
+            //         this.total = this.price * this.count;
+            //     },
+            //     count(){
+            //         this.total = this.price * this.count;
+            //     },
+            // }
+        })
+
+    </script>
+
+</body>
+</html>

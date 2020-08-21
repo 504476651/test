@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'></div>
+
+    <script>
+
+        // 响应式更新 -> 数据变化会自动更新视图.
+        // Vue是如何知道数据发生了变化.
+
+        // Vue的双向数据绑定原理是什么?
+
+        // 视图
+        let oApp = document.querySelector('#app');
+
+        // 数据
+        let data = {num:0};
+
+        //  默认更新一次视图.
+        // oApp.innerText = data.num;
+        render(data.num);
+
+        let val = data.num;
+
+        // 数据中的num改变时,修改oApp的内容.
+        // let des = Object.getOwnPropertyDescriptor(data,'num');
+
+        // 给num数据设置数据监听(数据劫持).
+        Object.defineProperty(data,'num',{
+
+            // 设置了get和set的数据,它的值必须通过get返回.
+
+            // 当前num被求值时触发.
+            get(){
+                console.log('num被访问了');
+                return val
+            },
+            // 当num被修改时触发.
+            set(newval){
+                console.log('num被修改了');
+                // 让新修改的值变成num的值.
+                val = newval;
+                // 数据变化后更新oApp的内容
+                // oApp.innerText = data.num;
+                render(data.num)
+            }
+        })
+
+        // 视图更新函数.
+        function render(str){
+            oApp.innerText = str;
+        }
+            
+    </script>
+
+</body>
+</html>

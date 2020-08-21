@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        
+    </div>
+
+    <script>
+
+        let oApp = document.querySelector('#app');
+        let oUl = document.querySelector('ul');
+        let arr = [1111,2222,3333];
+
+        // for(let i=0;i<arr.length;i++){
+        //     oUl.innerHTML += `<li>${arr[i]}</li>`
+        // }
+        
+        // 跟新视图.
+        function render(arr){
+            // arr = ['<li>1111</li>','<li>2222</li>','<li>333</li>'];
+
+            // 把数据放入li里
+            arr = create(arr);
+           
+            console.log(arr);
+            // 根据数据arr渲染ul
+            oApp.innerHTML = `
+                <ul>
+                    ${arr.join('')}
+                </ul>
+            `
+        }
+
+        function create(arr){
+            // 把数据放入li里
+            return arr.map((item,i)=>{
+                return `<li>${item}</li>`
+            })
+        }
+
+        render(arr)
+
+        
+
+
+    </script>
+
+</body>
+</html>

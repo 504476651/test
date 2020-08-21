@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <ul>
+            <!-- 
+                <li v-for='item in arr'>{{item}}</li>
+                <li v-for='item in arr1'>{{item}}</li> 
+            -->
+
+            <!-- <li v-for='item in arr.concat(arr1)'>{{item}}</li>  -->
+
+            <!-- <li v-for='item in arr'>{{item+item}}</li> -->
+
+            <!-- <li v-for='(item,i) in arr'>{{item+(i+1)}}</li> -->
+            <!-- 
+                <li>a我</li>
+                <li>b你</li>
+                <li>c他</li> 
+            -->
+
+            <li v-for='(item,i) in newArr'>{{item}}</li>
+
+        </ul>
+    </div>
+
+    <script src="js/vue1.js"></script>
+    <script>
+
+        // computed -> 计算属性
+        // 计算属性 -> 原始数据需要经过加工(计算)处理之后得到新数据.
+
+        new Vue({
+            el:'#app',
+            data:{
+                arr:['a','b','c'],
+                arr1:['w','q','z']
+            },
+            computed:{
+                // 计算属性的数据需要写成函数的形式.
+                newArr(){
+                    let arr = ['我','你','他'];
+                    // 计算属性的值,需要return 出来.
+                    return this.arr.map((item,i)=>{
+                        return item+arr[i]
+                    })
+                }
+            }
+        })
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <!-- 
+            <input type="text" placeholder="单价" v-model='price' @input='setTotal' />
+            <input type="text" placeholder="数量" v-model='count' @input='setTotal' /> 
+        -->
+        <input type="text" placeholder="单价" v-model='price' />
+        <input type="text" placeholder="数量" v-model='count' />
+        <div>总价:{{total}}</div>
+    </div>
+
+    <script src="js/vue1.js"></script>
+    <script>
+
+        // 计算属性的数据应该写在computed内.不应该写在data内
+        // 如果写在data内,需要另外的逻辑去更新它的值.
+        // 计算属性可以是一个函数,这个函数在数据变化时自动返回新的计算的值.
+
+        new Vue({
+            el:'#app',
+            data:{
+                price:1,
+                count:1,
+                // total:1
+            },
+            computed:{
+                total(){
+                    return this.price * this.count;
+                }
+            }
+            // methods:{
+            //     setTotal(){
+            //         this.total = this.price * this.count;
+            //     }
+            // }
+        })
+
+    </script>
+
+</body>
+</html>

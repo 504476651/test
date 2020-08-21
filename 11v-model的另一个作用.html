@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <!-- <input type="checkbox" :checked='flag' >11111111 -->
+        <input type="checkbox" v-model='flag' >11111111
+    </div>
+
+    <script src="js/vue1.js"></script>
+    <script>
+
+        // 如果希望通过一个布尔值驱动一个复选框的勾选状态，应该使用v-model，而不是checked
+        // v-model除了可以跟新绑定的数据，还可以控制视图的勾选状态。(双向数据绑定)
+        // 双向数据绑定 -> 数据变,视图也变.视图变,数据跟着变.
+
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                flag:true
+            }
+        })
+
+    </script>
+
+</body>
+</html>

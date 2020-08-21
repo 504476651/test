@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        <input type="button" value='按钮' @click='changeNum'>
+        {{num}}
+        <ul>
+            <li v-for='d in 5'>{{fn()}}</li>
+        </ul>
+    </div>
+    <script src="js/vue1.js"></script>
+
+    <script>
+
+        // Vue的视图更新时,视图内的所有表达式和指令都会重新调用和执行.
+        // 点击按钮,按钮修改num,num导致视图跟新,视图跟新导致v-for重新执行.
+        // v-for重新执行,fn()重新调用,重新调用返回新的随机数,li的内容就得到了更新.
+
+        // 面试常问的问题
+        // Vue的核心是什么?
+        // Vue的数据更新原理?Vue的双向数据绑定原理.V-model的原理.
+        // Vue是如何实现响应式视图更新(如何让数据变视图跟着变)的.
+
+        new Vue({
+            el:'#app',
+            data:{
+                num:0
+            },
+            methods:{
+                fn(){
+                    console.log('fn调用了');
+                    return Math.random();
+                },
+                changeNum(){
+                    this.num = Math.floor(Math.random()*10);
+                }
+            }
+        })
+
+    </script>
+
+</body>
+</html>

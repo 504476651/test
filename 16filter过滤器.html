@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id='app'>
+        <input type="text" v-model='msg'>
+        <!-- <p>{{newStr}}</p> -->
+
+        <!-- msg数据经过toUpperCase的格式过滤之后再显示 -->
+        <!-- | -> 管道符 -->
+        <p>{{msg | toUpperCase}}</p>
+    </div>
+
+    <script src="js/vue1.js"></script>
+    <script>
+        
+        // 全局的过滤器
+        Vue.filter('toUpperCase',function(val){
+            return val.toUpperCase();
+        });
+
+        new Vue({
+            el:'#app',
+            data:{msg:'',newStr:''},
+
+            // 局部过滤器。
+            // filters:{
+                // val是管道符前面的表达式的值。
+                // msg | toUpperCase的值就是toUpperCase的返回值。
+            //     toUpperCase(val){
+            //         return val.toUpperCase();
+            //     }
+            // }
+
+            // computed:{
+            //     newStr(){
+            //         return this.msg.toUpperCase();
+            //     }
+            // }
+
+            // watch:{
+            //     msg(){
+            //         this.newStr = this.msg.toUpperCase();
+            //     }
+            // }
+        })
+
+    </script>
+
+</body>
+</html>

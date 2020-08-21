@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id='div'>
+			<input type="text" value="" />
+			<input type="button" value="发表" />
+			<ul>
+				<li>
+					<span>1</span><span :contenteditable="flag">11111111</span>
+					<input type="button" value="上移"  />					
+					<input type="button" value="下移"  />
+					<input type="button" value="删除" />
+					<input type="button" value="编辑" />
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script src="js/vue1.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		
+		//点击发表生成另一个li插入ul,li内需要有4个按钮,上移下移删除和编辑;
+		//第一个span显示序号,从1开始.第二个span的内容从输入框获取.
+		//点击上移或者下移按钮,把按钮所在的li上移或者下移.
+		//第一个li无法上移,最后一个li无法下移
+		//点击删除按钮删除按钮所在li
+		//点击编辑按钮编辑对应span的内容.contenteditable是true就可以编辑.
+
+//		提示:
+//		数据驱动,本题你需要自己构造结构如下的类似数组.
+//		arr:[{content:1111,edit:true},{content:222222,edit:false}]
+//		通过操作此数组实现上移下移,方法:arr.splice(下标,删除个数)		
+
+		
+	</script>
+</html>
